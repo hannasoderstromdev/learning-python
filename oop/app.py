@@ -1,5 +1,10 @@
 from movie import Movie
+from user import User
 
-my_movie = Movie('The Matrix', 'Sci-fi')
+my_movie = Movie('The Matrix', 'Sci-fi', True)
 
-print(my_movie.name, my_movie.genre)
+user = User("Hanna")
+
+user.movies.append(my_movie)
+
+print(user.name, user.movies_watched())
