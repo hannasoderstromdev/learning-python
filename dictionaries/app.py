@@ -19,4 +19,20 @@ def create_student():
   return student
 
 
-print(create_student())
+def add_mark_to_student(student, number):
+  student['marks'].append(number)
+
+def calc_avg_mark(student):
+  number = len(student['marks'])
+  if number == 0:
+    return 0
+
+  total = sum(student['marks'])
+  return total / number
+
+student = create_student()
+add_mark_to_student(student, 1)
+add_mark_to_student(student, 1)
+add_mark_to_student(student, 1)
+
+print(calc_avg_mark(student))
