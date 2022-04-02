@@ -30,9 +30,42 @@ def calc_avg_mark(student):
   total = sum(student['marks'])
   return total / number
 
-student = create_student()
-add_mark_to_student(student, 1)
-add_mark_to_student(student, 1)
-add_mark_to_student(student, 1)
+def student_details(student):
+  print("{}, average mark: {}".format(student['name'], calc_avg_mark(student)))
 
-print(calc_avg_mark(student))
+def print_students_details(student_list):
+  for i, student in enumerate(student_list):
+    print("ID: {}".format(i))
+    student_details(student)
+
+def menu():
+  selection = input("Enter 'p' to print the student list, "
+              "'a' to add a new student, "
+              "'m' to add mark to a student, "
+              "or 'q' to quit."
+              "Enter your selection: ")
+
+  student_list = []
+  
+  while selection != 'q':
+    if selection == 'p':
+      print_students_details(student_list)
+    
+    elif selection == 'a':
+      student_list.append(create_student())
+    
+    elif selection == 'm':
+      student_id = int(input("Enter student ID: "))
+      student = student_list[student_id]
+      new_mark = int(input("Enter mark: "))
+      add_mark_to_student(student, new_mark)
+
+    selection = input("Enter 'p' to print the student list, "
+                  "'a' to add a new student, "
+                  "'m' to add mark to a student, "
+                  "or 'q' to quit."
+                  "Enter your selection: ")
+  
+  print("Bye!")
+
+menu()
